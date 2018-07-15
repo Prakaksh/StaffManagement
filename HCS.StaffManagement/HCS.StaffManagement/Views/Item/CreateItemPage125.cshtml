@@ -1,0 +1,79 @@
+﻿@model HCS.StaffManagement.Models.ItemModel
+
+@{
+    ViewBag.Title = "ItemPage";
+    Layout = "~/Views/Shared/_AdminDashBoard.cshtml";
+}
+
+
+<br /> <br />
+<div class="container-fluid">
+    <form id="RegisterValidation" action="">
+        <div class="row card">
+            <div class="col-md-12">
+                <div class="card-header card-header-text" data-background-color="red">
+                    <h4 class="card-title">Create Item</h4>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Item Type
+                      
+                    </label>
+                    @Html.TextBoxFor(Model => Model.ItemType, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Group Name
+                    </label>
+                    @Html.TextBoxFor(Model => Model.GroupName, new { @class = "form-control"})
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Item Name
+                        <small>*</small>
+                    </label>
+                    @Html.TextBoxFor(Model => Model.ItemName, new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Unit
+                    </label>
+                    @Html.TextBoxFor(Model => Model.Unit, new { @class = "form-control"})
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Tax Preference
+                    </label>
+                    @Html.TextBoxFor(Model => Model.TaxPreference, new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="category form-category text-danger">
+                    <small>*</small> Required fields
+                </div>
+            </div>
+
+            <div class="form-footer text-right col-md-6">
+                <button type="submit" class="btn btn-primary btn-fill">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>

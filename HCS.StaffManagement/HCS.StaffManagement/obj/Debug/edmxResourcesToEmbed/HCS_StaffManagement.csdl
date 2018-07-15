@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StaffManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CustomerDetail">
+    <Key>
+      <PropertyRef Name="GSTIN" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GSTIN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerAddr1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAddr2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EmailID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MstState" Relationship="Self.FK_CustomerDetails_MstState" FromRole="CustomerDetails" ToRole="MstState" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoice_CustomerDetails" FromRole="CustomerDetails" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceNO" />
+    </Key>
+    <Property Name="InvoiceNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="InvoiceMonth" Type="DateTime" Precision="0" />
+    <Property Name="InvoicePeriod" Type="DateTime" Precision="0" />
+    <Property Name="InvoiceTo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CGST" Type="Int32" />
+    <Property Name="SGST" Type="Int32" />
+    <Property Name="SubTotalAmount" Type="Int64" />
+    <Property Name="TaxAmount" Type="Int32" />
+    <Property Name="GrandTotal" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CustomerDetail" Relationship="Self.FK_Invoice_CustomerDetails" FromRole="Invoice" ToRole="CustomerDetails" />
+    <NavigationProperty Name="InovoiceDetails" Relationship="Self.FK_InovoiceDetails_Invoice" FromRole="Invoice" ToRole="InovoiceDetails" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GroupName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Unit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TaxPreference" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InovoiceDetails" Relationship="Self.FK_InvoiceDetails_Item" FromRole="Item" ToRole="InovoiceDetails" />
+  </EntityType>
+  <EntityType Name="MstCountry">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MstStates" Relationship="Self.FK_MstState_MstCountry" FromRole="MstCountry" ToRole="MstState" />
+  </EntityType>
+  <EntityType Name="MstState">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetails_MstState" FromRole="MstState" ToRole="CustomerDetails" />
+    <NavigationProperty Name="MstCountry" Relationship="Self.FK_MstState_MstCountry" FromRole="MstState" ToRole="MstCountry" />
+    <NavigationProperty Name="Organizations" Relationship="Self.FK_Organization_MstState" FromRole="MstState" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationID" />
+    </Key>
+    <Property Name="OrganizationID" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GSTIN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ESCINO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EPFNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OrganizationAddr1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationAddr2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EmailID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InvoicePrefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IslockedOut" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MstState" Relationship="Self.FK_Organization_MstState" FromRole="Organization" ToRole="MstState" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Org" FromRole="Organization" ToRole="User" />
+  </EntityType>
+  <EntityType Name="RoleType">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_RoleID_RoleType" FromRole="RoleType" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrganizationID" Type="Guid" />
+    <Property Name="RoleID" Type="Guid" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="HashPassword" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IslockedOut" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Organization" Relationship="Self.FK_User_Org" FromRole="User" ToRole="Organization" />
+    <NavigationProperty Name="RoleType" Relationship="Self.FK_RoleID_RoleType" FromRole="User" ToRole="RoleType" />
+  </EntityType>
+  <EntityType Name="InovoiceDetail">
+    <Key>
+      <PropertyRef Name="SLNO" />
+    </Key>
+    <Property Name="SLNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="ItemDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="TotalAmount" Type="Int64" />
+    <NavigationProperty Name="Invoice" Relationship="Self.FK_InovoiceDetails_Invoice" FromRole="InovoiceDetails" ToRole="Invoice" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_InvoiceDetails_Item" FromRole="InovoiceDetails" ToRole="Item" />
+  </EntityType>
+  <Association Name="FK_CustomerDetails_MstState">
+    <End Role="MstState" Type="Self.MstState" Multiplicity="0..1" />
+    <End Role="CustomerDetails" Type="Self.CustomerDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MstState">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="CustomerDetails">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_CustomerDetails">
+    <End Role="CustomerDetails" Type="Self.CustomerDetail" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerDetails">
+        <PropertyRef Name="GSTIN" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="InvoiceTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InovoiceDetails_Invoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="0..1" />
+    <End Role="InovoiceDetails" Type="Self.InovoiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceNO" />
+      </Principal>
+      <Dependent Role="InovoiceDetails">
+        <PropertyRef Name="InvoiceNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceDetails_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="InovoiceDetails" Type="Self.InovoiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="InovoiceDetails">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MstState_MstCountry">
+    <End Role="MstCountry" Type="Self.MstCountry" Multiplicity="0..1" />
+    <End Role="MstState" Type="Self.MstState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MstCountry">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="MstState">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organization_MstState">
+    <End Role="MstState" Type="Self.MstState" Multiplicity="0..1" />
+    <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MstState">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Org">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleID_RoleType">
+    <End Role="RoleType" Type="Self.RoleType" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleType">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StaffManagementDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="MstCountries" EntityType="Self.MstCountry" />
+    <EntitySet Name="MstStates" EntityType="Self.MstState" />
+    <EntitySet Name="Organizations" EntityType="Self.Organization" />
+    <EntitySet Name="RoleTypes" EntityType="Self.RoleType" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="InovoiceDetails" EntityType="Self.InovoiceDetail" />
+    <AssociationSet Name="FK_CustomerDetails_MstState" Association="Self.FK_CustomerDetails_MstState">
+      <End Role="MstState" EntitySet="MstStates" />
+      <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_CustomerDetails" Association="Self.FK_Invoice_CustomerDetails">
+      <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InovoiceDetails_Invoice" Association="Self.FK_InovoiceDetails_Invoice">
+      <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="InovoiceDetails" EntitySet="InovoiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceDetails_Item" Association="Self.FK_InvoiceDetails_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="InovoiceDetails" EntitySet="InovoiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MstState_MstCountry" Association="Self.FK_MstState_MstCountry">
+      <End Role="MstCountry" EntitySet="MstCountries" />
+      <End Role="MstState" EntitySet="MstStates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_MstState" Association="Self.FK_Organization_MstState">
+      <End Role="MstState" EntitySet="MstStates" />
+      <End Role="Organization" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Org" Association="Self.FK_User_Org">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleID_RoleType" Association="Self.FK_RoleID_RoleType">
+      <End Role="RoleType" EntitySet="RoleTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="Usp_OrganizationInsertUpdate">
+      <Parameter Name="OrganizationName" Mode="In" Type="Guid" />
+      <Parameter Name="GSTIN" Mode="In" Type="String" />
+      <Parameter Name="ESCINO" Mode="In" Type="String" />
+      <Parameter Name="EPFNO" Mode="In" Type="String" />
+      <Parameter Name="OrganizationAddr1" Mode="In" Type="String" />
+      <Parameter Name="OrganizationAddr2" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="Int32" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="ContactNO" Mode="In" Type="String" />
+      <Parameter Name="MobileNO" Mode="In" Type="String" />
+      <Parameter Name="EmailID" Mode="In" Type="String" />
+      <Parameter Name="InvoicePrefix" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

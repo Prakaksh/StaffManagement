@@ -1,0 +1,113 @@
+﻿@model HCS.StaffManagement.Models.CustomerDetailsModel
+
+@{
+    ViewBag.Title = "CustomerPage";
+    Layout = "~/Views/Shared/_LandingPage.cshtml";
+}
+
+<br /> <br />
+<div class="container-fluid">
+    <form id="RegisterValidation" action="">
+        <div class="row card">
+            <div class="col-md-12">
+                <div class="card-header card-header-text" data-background-color="red">
+                    <h4 class="card-title">Create Customer</h4>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Customer Name
+                        <small>*</small>
+                    </label>
+                    @Html.TextBoxFor(Model => Model.CustomerName, new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        GSTIN NO
+                        <small>*</small>
+                    </label>
+                    @Html.TextBoxFor(Model => Model.GSTIN, new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Customer Address Line 1
+                    </label>
+                    @Html.TextBoxFor(Model => Model.CustomerAddr1, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Customer Address Line 2
+                    </label>
+                    @Html.TextBoxFor(Model => Model.CustomerAddr2, new { @class = "form-control" })
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        State
+                        <small>*</small>
+                    </label>
+                    @Html.TextBoxFor(Model => Model.State, new { @class = "form-control",required="" })
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Contact No
+                    </label>
+                    @Html.TextBoxFor(Model => Model.ContactNO, new { @class = "form-control", type = "number" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Mobile No
+                    </label>
+                    @Html.TextBoxFor(Model => Model.MobileNO, new { @class = "form-control", type = "number" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Email ID
+                    </label>
+                    @Html.TextBoxFor(Model => Model.EmailID, new { @class = "form-control", type = "email" })
+                </div>
+            </div>
+
+            @*<div class="col-md-4">
+                <label></label>
+            </div>*@
+
+            <div class="col-md-6">
+                <div class="category form-category text-danger">
+                    <small>*</small> Required fields
+                </div>
+            </div>
+
+            <div class="form-footer text-right col-md-6">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>

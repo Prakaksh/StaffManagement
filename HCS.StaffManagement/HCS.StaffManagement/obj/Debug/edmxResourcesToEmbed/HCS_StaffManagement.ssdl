@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StaffManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CustomerDetails">
+    <Key>
+      <PropertyRef Name="GSTIN" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GSTIN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="CustomerAddr1" Type="nvarchar(max)" />
+    <Property Name="CustomerAddr2" Type="nvarchar(max)" />
+    <Property Name="State" Type="int" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="ContactNO" Type="varchar" MaxLength="20" />
+    <Property Name="MobileNO" Type="varchar" MaxLength="15" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HCS_StaffManagement.dbo.InovoiceDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="InovoiceDetails">
+    <Key>
+      <PropertyRef Name="SLNO" />
+    </Key>
+    <Property Name="SLNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNO" Type="varchar" MaxLength="20" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemDescription" Type="varchar" MaxLength="100" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Price" Type="int" />
+    <Property Name="TotalAmount" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceNO" />
+    </Key>
+    <Property Name="InvoiceNO" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="InvoiceDate" Type="date" Nullable="false" />
+    <Property Name="InvoiceMonth" Type="date" />
+    <Property Name="InvoicePeriod" Type="date" />
+    <Property Name="InvoiceTo" Type="varchar" MaxLength="20" />
+    <Property Name="CGST" Type="int" />
+    <Property Name="SGST" Type="int" />
+    <Property Name="SubTotalAmount" Type="bigint" />
+    <Property Name="TaxAmount" Type="int" />
+    <Property Name="GrandTotal" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemType" Type="varchar" MaxLength="20" />
+    <Property Name="GroupName" Type="varchar" MaxLength="30" />
+    <Property Name="ItemName" Type="varchar" MaxLength="100" />
+    <Property Name="Unit" Type="varchar" MaxLength="20" />
+    <Property Name="TaxPreference" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MstCountry">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MstState">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationID" />
+    </Key>
+    <Property Name="OrganizationID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrganizationName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="GSTIN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ESCINO" Type="varchar" MaxLength="20" />
+    <Property Name="EPFNO" Type="varchar" MaxLength="20" />
+    <Property Name="OrganizationAddr1" Type="nvarchar(max)" />
+    <Property Name="OrganizationAddr2" Type="nvarchar(max)" />
+    <Property Name="State" Type="int" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="ContactNO" Type="varchar" MaxLength="20" />
+    <Property Name="MobileNO" Type="varchar" MaxLength="15" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="InvoicePrefix" Type="varchar" MaxLength="50" />
+    <Property Name="Logo" Type="varbinary(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IslockedOut" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RoleType">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="OrganizationID" Type="uniqueidentifier" />
+    <Property Name="RoleID" Type="uniqueidentifier" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="25" />
+    <Property Name="HashPassword" Type="varbinary(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IslockedOut" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_CustomerDetails_MstState">
+    <End Role="MstState" Type="Self.MstState" Multiplicity="0..1" />
+    <End Role="CustomerDetails" Type="Self.CustomerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MstState">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="CustomerDetails">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InovoiceDetails_Invoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="0..1" />
+    <End Role="InovoiceDetails" Type="Self.InovoiceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceNO" />
+      </Principal>
+      <Dependent Role="InovoiceDetails">
+        <PropertyRef Name="InvoiceNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_CustomerDetails">
+    <End Role="CustomerDetails" Type="Self.CustomerDetails" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerDetails">
+        <PropertyRef Name="GSTIN" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="InvoiceTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceDetails_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="InovoiceDetails" Type="Self.InovoiceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="InovoiceDetails">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MstState_MstCountry">
+    <End Role="MstCountry" Type="Self.MstCountry" Multiplicity="0..1" />
+    <End Role="MstState" Type="Self.MstState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MstCountry">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="MstState">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organization_MstState">
+    <End Role="MstState" Type="Self.MstState" Multiplicity="0..1" />
+    <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MstState">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleID_RoleType">
+    <End Role="RoleType" Type="Self.RoleType" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleType">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Org">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Usp_OrganizationInsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrganizationName" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="GSTIN" Type="varchar" Mode="In" />
+    <Parameter Name="ESCINO" Type="varchar" Mode="In" />
+    <Parameter Name="EPFNO" Type="varchar" Mode="In" />
+    <Parameter Name="OrganizationAddr1" Type="varchar" Mode="In" />
+    <Parameter Name="OrganizationAddr2" Type="varchar" Mode="In" />
+    <Parameter Name="State" Type="int" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="ContactNO" Type="varchar" Mode="In" />
+    <Parameter Name="MobileNO" Type="varchar" Mode="In" />
+    <Parameter Name="EmailID" Type="varchar" Mode="In" />
+    <Parameter Name="InvoicePrefix" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="StaffManagementDBModelStoreContainer">
+    <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MstCountry" EntityType="Self.MstCountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MstState" EntityType="Self.MstState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleType" EntityType="Self.RoleType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InovoiceDetails" EntityType="Self.InovoiceDetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [InovoiceDetails].[SLNO] AS [SLNO], 
+    [InovoiceDetails].[InvoiceNO] AS [InvoiceNO], 
+    [InovoiceDetails].[ItemID] AS [ItemID], 
+    [InovoiceDetails].[ItemDescription] AS [ItemDescription], 
+    [InovoiceDetails].[Quantity] AS [Quantity], 
+    [InovoiceDetails].[Price] AS [Price], 
+    [InovoiceDetails].[TotalAmount] AS [TotalAmount]
+    FROM [dbo].[InovoiceDetails] AS [InovoiceDetails]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CustomerDetails_MstState" Association="Self.FK_CustomerDetails_MstState">
+      <End Role="MstState" EntitySet="MstState" />
+      <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InovoiceDetails_Invoice" Association="Self.FK_InovoiceDetails_Invoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="InovoiceDetails" EntitySet="InovoiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_CustomerDetails" Association="Self.FK_Invoice_CustomerDetails">
+      <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceDetails_Item" Association="Self.FK_InvoiceDetails_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="InovoiceDetails" EntitySet="InovoiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MstState_MstCountry" Association="Self.FK_MstState_MstCountry">
+      <End Role="MstCountry" EntitySet="MstCountry" />
+      <End Role="MstState" EntitySet="MstState" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_MstState" Association="Self.FK_Organization_MstState">
+      <End Role="MstState" EntitySet="MstState" />
+      <End Role="Organization" EntitySet="Organization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleID_RoleType" Association="Self.FK_RoleID_RoleType">
+      <End Role="RoleType" EntitySet="RoleType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Org" Association="Self.FK_User_Org">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

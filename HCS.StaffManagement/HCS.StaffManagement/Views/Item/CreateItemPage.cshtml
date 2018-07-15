@@ -1,0 +1,143 @@
+﻿
+@model HCS.StaffManagement.Models.ItemModel
+
+@{
+    ViewBag.Title = "ItemPage";
+    Layout = "~/Views/Shared/_AdminDashBoard.cshtml";
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setFormValidation('#RegisterValidation');
+
+            
+    function setFormValidation(id) {
+        $(id).validate({
+            errorPlacement: function(error, element) {
+                $(element).parent('div').addClass('has-error');
+            }
+        });
+    }
+
+   
+
+    });
+</script>
+
+
+<br /> <br />
+<div class="container-fluid">
+@using (Ajax.BeginForm("CreateItemPage", "Item", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onAjaxRequestSuccess" }))
+{
+    @Html.AntiForgeryToken()
+
+    <form id="RegisterValidation">
+        <div class="row card">
+            <div class="col-md-12">
+                <div class="card-header card-header-text" data-background-color="red">
+                    <h4 class="card-title">Create Item</h4>
+                </div>
+            </div>
+
+           
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Item Type 
+                        <small>*</small>
+                    </label>
+                    @Html.TextBoxFor(Model => Model.ItemType, new { @class = "form-control", required = "true", Value="Service",Readonly="true" })
+                    @Html.ValidationMessageFor(model => model.ItemType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Group Name
+                    </label>
+                    @Html.TextBoxFor(Model => Model.GroupName, new { @class = "form-control" })
+                </div>
+            </div>*@
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Item Name
+                        <small>*</small>
+                    </label>
+                    @Html.TextBoxFor(Model => Model.ItemName, new { @class = "form-control", required = "true" })
+                    @Html.ValidationMessageFor(model => model.ItemName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Unit
+                    </label>
+                    @Html.TextBoxFor(Model => Model.Unit, new { @class = "form-control" })
+                </div>
+            </div>
+
+            @*<div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">
+                        Tax Preference
+                        <small>*</small>
+                    </label>
+                    @Html.CheckBoxFor(Model => Model.TaxPreference, new { @class = "defaultToggled", required="true", value="on" })
+                  
+                </div>
+            </div>*@
+
+
+            <div class="col-md-6">
+                <div class="category form-category text-danger">
+                    <small>*</small> Required fields
+                </div>
+            </div>
+
+            <div class="form-footer text-right col-md-6">
+                <button type="submit" class="btn btn-primary btn-fill">Save</button>
+            </div>
+        </div>
+
+    </form>
+}
+    
+</div>
+
+
+<script>
+    var onAjaxRequestSuccess = function (result) 
+    {
+       
+        if (result.EnableError) {
+            // Setting.  
+            alert(result.ErrorMsg);
+        } else if (result.EnableSuccess) {
+            // Setting.  
+            alert(result.SuccessMsg);
+            // Resetting form.  
+            $('#AjaxformId').get(0).reset();
+        }
+    }  
+
+    //$(document).ready(function () {
+    //    debugger;
+    //    $('#hcs').click(function () {
+    //        window.location.href = '/Organization/CreateOrganizationPage';
+    //    });
+
+       
+      
+</script>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

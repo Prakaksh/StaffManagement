@@ -1,0 +1,177 @@
+﻿@model HCS.StaffManagement.Models.InvoiceModel
+
+@{
+    ViewBag.Title = "InvoicePage";
+    Layout = "~/Views/Shared/_LandingPage.cshtml";
+}
+<style>
+    .form-control {
+    height: 20px !important;
+    padding: 7px;
+    font-size: 14px;
+    line-height: .5;
+}
+</style>
+<h2>InvoicePage</h2>
+
+    <div class="container card">
+        <div class="row clearfix">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover" id="tab_logic">
+                    <thead>
+                        <tr class="text-primary">
+                            
+                            <th class="text-center "> # </th>
+                            <th class="text-center"> Particulars </th>
+                            <th class="text-center"> Duties  </th>
+                            <th class="text-center"> Price </th>
+                            <th class="text-center"> Total </th>
+                            <th class="text-center"style="width:5px"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id='addr0'>
+                            
+                            <td>1</td>
+                            <td><input type="text" name='product[]' placeholder='Enter Product Name' class="form-control" /></td>
+                            <td><input type="number" name='qty[]' placeholder='Enter Qty' class="form-control qty" step="0" min="0" /></td>
+                            <td><input type="number" name='price[]' placeholder='Enter Unit Price' class="form-control price" step="0.00" min="0" /></td>
+                            <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly /></td>
+                            <td>
+                            <button type="button" class="glyphicon glyphicon-trash btn btn-danger btn-round btn-xs delete_row1">
+                            </button>
+                            </td>
+                        </tr>
+                        <tr id='addr1'></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12">
+                <button id="add_row" class="btn btn-rose pull-left btn-sm btn-round">Add Row</button>
+                <button id='delete_row' class="pull-right btn btn-info btn-sm btn-round">Delete Row</button>
+            </div>
+        </div>
+        <div class="row clearfix" style="margin-top:20px">
+            <div class="pull-right col-md-4">
+                <table class="table table-bordered table-hover" id="tab_logic_total">
+                    <tbody>
+                        <tr>
+                            <th class="text-center text-success">Sub Total</th>
+                            <td class="text-center"><input type="number" name='sub_total' placeholder='0.00' class="form-control" id="sub_total" readonly /></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">CGST 9%</th>
+                            <td class="text-center">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <input type="number" class="form-control" id="tax" placeholder="0" value="9" readonly>
+                                    <div class="input-group-addon">%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">SGST 9% </th>
+                            <td class="text-center">
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <input type="number" class="form-control" id="tax1" placeholder="0" value="9" readonly>
+                                    <div class="input-group-addon">%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Tax Amount</th>
+                            <td class="text-center"><input type="number" name='tax_amount' id="tax_amount" placeholder='0.00' class="form-control" readonly /></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center text-success">Grand Total</th>
+                            <td class="text-center"><input type="number" name='total_amount' id="total_amount" placeholder='0.00' class="form-control" readonly /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="row clearfix">
+            <div class="col-md-12">
+               
+                <button id='GenereateInvoice' class="pull-right btn btn-primary">Generate Invoice</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+$(document).ready(function(){
+    var i=1;
+    $("#add_row").click(function () {
+        b = i - 1;
+        console.log("b ", b, "i  ", i);
+      	$('#addr'+i).html($('#addr'+b).html()).find('td:first-child').html(i+1);
+      	$('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+      	i++;
+
+      	callDelete();
+  	});
+    $("#delete_row").click(function(){
+    	if(i>1){
+		$("#addr"+(i-1)).html('');
+		i--;
+		}
+		calc();
+    });   
+
+	$('#tab_logic tbody').on('keyup change',function(){
+		calc();
+	});
+	$('#tax,#tax1').on('keyup change',function(){
+		calc_total();
+	});
+
+	callDelete();
+
+});
+
+function calc()
+{
+	$('#tab_logic tbody tr').each(function(i, element) {
+		var html = $(this).html();
+		if(html!='')
+		{
+			var qty = $(this).find('.qty').val();
+			var price = $(this).find('.price').val();
+			$(this).find('.total').val(qty*price);
+
+			calc_total();
+		}
+    });
+}
+
+function calc_total()
+{
+	total=0;
+	$('.total').each(function() {
+        total += parseFloat($(this).val());
+	});
+	debugger;
+	$('#sub_total').val(total.toFixed(2));
+	tax_sum = total / 100 * $('#tax').val();
+	tax_sum1 = total / 100 * $('#tax1').val();
+	$('#tax_amount').val((tax_sum + tax_sum1).toFixed(2));
+    
+	$('#total_amount').val((parseInt($('#tax_amount').val())+ total).toFixed());
+}
+
+function callDelete() {
+    $('.delete_row1').click(function () {
+        $(this).closest('tr').remove();
+        //if (i > 1) {
+        //    $("#addr" + (i - 1)).html('');
+        //    i--;
+        //}
+        calc();
+        calc_total();
+    });
+}
+    </script>

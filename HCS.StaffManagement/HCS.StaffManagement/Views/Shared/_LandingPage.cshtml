@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>HCSStaffAdmin</title>
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/material-dashboard.css" />
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="~/Content/material-icons.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+
+    <!--   Core JS Files   -->
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/material-plugins/material.min.js"></script>
+    <script src="~/Scripts/material-plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Scripts/material-plugins/material-dashboard.js"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    @*<script src="~/Scripts/material-plugins/demo.js"></script>*@
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="">@Html.ActionLink("Home", "AdminDashBoard", "Home")</li>
+                </ul>
+
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <hr />
+    </div>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
+</html>
