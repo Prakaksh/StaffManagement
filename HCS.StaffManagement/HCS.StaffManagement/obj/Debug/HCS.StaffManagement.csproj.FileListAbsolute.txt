@@ -208,6 +208,9 @@ E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AI.DependencyCollector.xml
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AI.Web.xml
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AI.WindowsServer.xml
+E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AspNet.Identity.Owin.xml
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.Owin.xml
@@ -232,9 +235,5 @@ E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\System.Web.WebPages.Deployment.xml
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\System.Web.WebPages.Razor.xml
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\System.Web.Optimization.xml
-E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AspNet.Identity.Core.xml
-E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AspNet.Identity.Owin.xml
-E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\obj\Debug\HCS.StaffManagement.csprojResolveAssemblyReference.cache
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\obj\Debug\HCS.StaffManagement.dll
 E:\Project_IMP_File\StaffManagement\HCS.StaffManagement\HCS.StaffManagement\obj\Debug\HCS.StaffManagement.pdb

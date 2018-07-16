@@ -28,119 +28,119 @@
                     </div>
                     @*<h4 class="card-head card-header-text btn btn-danger input-lg" data-background-color="rose">Create Organization</h4>*@
                 </div>
-
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            Organization Name
-                            <small>*</small>
-                        </label>
-                        @Html.TextBoxFor(Model => Model.OrganizationName, new { @class = "form-control", required = "true" })
+                <div class="row col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                Organization Name
+                                <small>*</small>
+                            </label>
+                            @Html.TextBoxFor(Model => Model.OrganizationName, new { @class = "form-control", required = "true" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            GSTIN NO
-                            <small>*</small>
-                        </label>
-                        @Html.TextBoxFor(Model => Model.GSTIN, new { @class = "form-control", required = "true" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                GSTIN NO
+                                <small>*</small>
+                            </label>
+                            @Html.TextBoxFor(Model => Model.GSTIN, new { @class = "form-control", required = "true" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            ESCI NO
-                        </label>
-                        @Html.TextBoxFor(Model => Model.ESCINO, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                ESCI NO
+                            </label>
+                            @Html.TextBoxFor(Model => Model.ESCINO, new { @class = "form-control" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            EPF NO
-                        </label>
-                        @Html.TextBoxFor(Model => Model.EPFNO, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                EPF NO
+                            </label>
+                            @Html.TextBoxFor(Model => Model.EPFNO, new { @class = "form-control" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            Organization Address Line 1
-                        </label>
-                        @Html.TextBoxFor(Model => Model.OrganizationAddr1, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                Organization Address Line 1
+                            </label>
+                            @Html.TextBoxFor(Model => Model.OrganizationAddr1, new { @class = "form-control" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            Organization Address Line 2
-                        </label>
-                        @Html.TextBoxFor(Model => Model.OrganizationAddr2, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                Organization Address Line 2
+                            </label>
+                            @Html.TextBoxFor(Model => Model.OrganizationAddr2, new { @class = "form-control" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <select name="DropDownStateList" id="StateList" class="form-control" onchange="fncState()">
-                        </select>
-                        @Html.HiddenFor(Model=>Model.State)
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <select name="DropDownStateList" id="StateList" class="form-control" onchange="fncState()"></select>
+                            @Html.HiddenFor(Model => Model.State)
 
-                        @*<select id="StateList" name="StateList" multiple="multiple" class="form-control"></select>*@
+                            @*<select id="StateList" name="StateList" multiple="multiple" class="form-control"></select>*@
 
-                        
 
-                       @*@Html.DropDownList("StateList", new { @class = "form-control"})*@
+
+                            @*@Html.DropDownList("StateList", new { @class = "form-control"})*@
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            City
-                        </label>
-                        @Html.TextBoxFor(Model => Model.City, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                City
+                            </label>
+                            @Html.TextBoxFor(Model => Model.City, new { @class = "form-control" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            Contact NO
-                        </label>
-                        @Html.TextBoxFor(Model => Model.ContactNO, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                Contact NO
+                            </label>
+                            @Html.TextBoxFor(Model => Model.ContactNO, new { @class = "form-control" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            Mobile NO
-                        </label>
-                        @Html.TextBoxFor(Model => Model.MobileNO, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                Mobile NO
+                            </label>
+                            @Html.TextBoxFor(Model => Model.MobileNO, new { @class = "form-control" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            Email ID
-                            <small>*</small>
-                        </label>
-                        @Html.TextBoxFor(Model => Model.EmailID, new { @class = "form-control", required = "true" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                Email ID
+                                <small>*</small>
+                            </label>
+                            @Html.TextBoxFor(Model => Model.EmailID, new { @class = "form-control", required = "true" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="form-group label-floating">
-                        <label class="control-label">
-                            Invoice Prefix
-                        </label>
-                        @Html.TextBoxFor(Model => Model.InvoicePrefix, new { @class = "form-control" })
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">
+                                Invoice Prefix
+                            </label>
+                            @Html.TextBoxFor(Model => Model.InvoicePrefix, new { @class = "form-control" })
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -159,7 +159,7 @@
 </div>
 
 <div id="DivOrganization" class="container-fluid">
-    <label> hiiii </label>
+    <label> Show Created Organization Datatable </label>
 </div>
 <script>
     var onAjaxRequestSuccess = function (result) {

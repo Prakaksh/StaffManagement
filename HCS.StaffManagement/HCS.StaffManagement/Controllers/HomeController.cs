@@ -25,6 +25,11 @@ namespace HCS.StaffManagement.Controllers
             return View();
         }
 
+        public ActionResult Unauthorized()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

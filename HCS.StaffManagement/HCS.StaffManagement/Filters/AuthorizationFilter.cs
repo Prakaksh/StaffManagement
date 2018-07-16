@@ -14,7 +14,6 @@ namespace HCS.StaffManagement.Filter
                 Repositories.AuthorizationContext objAuthorization = new Repositories.AuthorizationContext();
                 AuthorizationModel Result = objAuthorization.GetAuthorization();
                 string ProductKey = ConfigurationManager.AppSettings["ScreteKey"];
-                string dfsdf = Result.AuthorizationID;
                 if (Result.AuthorizationID == ProductKey.ToLower())
                 {
                     base.OnActionExecuting(filterContext);

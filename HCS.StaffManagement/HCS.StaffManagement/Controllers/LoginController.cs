@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCS.StaffManagement.Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,16 +11,16 @@ namespace HCS.StaffManagement.Controllers
     {
         // GET: Login
         [HttpGet]
-        [Authorize]
+        [AuthorizationFilter]
         public ActionResult Login()
         {
             return View();
         }
-        [Authorize]
-        public ActionResult LoginPage()
-        {
-            return View();
-        }
+        //[Authorize]
+        //public ActionResult LoginPage()
+        //{
+        //    return View();
+        //}
 
         public ActionResult DashBorad()
         {
