@@ -1,5 +1,6 @@
-﻿using CTS2010.Models;
-using Dapper;
+﻿using Dapper;
+using HCS.StaffManagement;
+using HCS.StaffManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace CTS2010.Repositories
+namespace HCS.StaffManagement.Repositories
 {
     public class AuthorizationContext
     {
@@ -20,7 +21,7 @@ namespace CTS2010.Repositories
 
                 using (sqlConnection = SqlUtility.GetConnection())
                 {
-                    dynamic Authorization = sqlConnection.Query<dynamic>("USP_GetAuthorization", commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    dynamic Authorization = sqlConnection.Query<dynamic>("usp_GetAuthorization", commandType: CommandType.StoredProcedure).FirstOrDefault();
 
                     return new AuthorizationModel()
                     {

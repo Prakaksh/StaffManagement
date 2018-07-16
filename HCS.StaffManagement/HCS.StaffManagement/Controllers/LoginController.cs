@@ -10,11 +10,12 @@ namespace HCS.StaffManagement.Controllers
     {
         // GET: Login
         [HttpGet]
+        [Authorize]
         public ActionResult Login()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult LoginPage()
         {
             return View();

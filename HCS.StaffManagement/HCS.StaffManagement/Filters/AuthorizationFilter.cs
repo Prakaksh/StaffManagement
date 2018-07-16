@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using CTS2010.Models;
+﻿using System.Web.Mvc;
 using System.Configuration;
-using System.Data.SqlClient;
+using HCS.StaffManagement.Models;
 
-using System.Data;
-using CTS2010.Repositories;
-
-namespace CTS2010.Filters
+namespace HCS.StaffManagement.Filter
 {
     public class AuthorizationFilter : ActionFilterAttribute
     {
